@@ -1,19 +1,17 @@
 <template>
-  <div id="app">
-    <footernav></footernav>
-    <!-- 下面是整体的路由容器都在这里汇聚这里 -->
-     <router-view></router-view>
- 
+  <div>
+     <filmlist :class="fixed? 'fixed':''"></filmlist>
+      <router-view></router-view>
   </div>
 </template>
 
 
 
 <script>
-import footernav from '@/components/footernav.vue'
+import filmlist from "@/components/filmlist.vue"
 export default {
     //组件名字
-  name: "app",
+  name: "film",
   //接收父组件给的东西 type是接收什么东西  default 默认值
   props: {
     list: {
@@ -29,12 +27,13 @@ export default {
   },
   //组件注册
   components: {
-   footernav,
+    filmlist,
   },
   // vue数据集中管理
   data() {
     return {
-      value: "1"
+      value: "1",
+      fixed:false
     };
   },
   //方法 函数写这里
@@ -64,7 +63,14 @@ export default {
   },
   //页面渲染之后
   mounted() {
-
+    window.addEventListener('scroll',(e)=>{
+      let top = document.documentElement.scrollTop
+      if(top>200){
+        this.fixed = true
+      }else{
+        this.fixed = false
+      }
+    },true)
   },
   //页面销毁之前
   beforeDestroy() {
@@ -103,21 +109,11 @@ export default {
 
 
 
-
-<style lang="scss" >
-* {
-  margin:0;
-  padding:0;
-}
-
-html,
-body {
-  touch-action:none;
-  height: 100%;
-  ul,
-  li{
-    list-style: none;
-  }
+<style lang="scss" scoped>
+.fixed{
+    position: fixed;
+    top:0;
+    background-color: #ffffff;
 }
 
 </style> 

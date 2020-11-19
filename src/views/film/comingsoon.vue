@@ -1,19 +1,15 @@
 <template>
-  <div id="app">
-    <footernav></footernav>
-    <!-- 下面是整体的路由容器都在这里汇聚这里 -->
-     <router-view></router-view>
- 
+  <div>
+      <h1>Commingsoon</h1>
   </div>
 </template>
 
 
 
 <script>
-import footernav from '@/components/footernav.vue'
 export default {
     //组件名字
-  name: "app",
+  name: "comingsoon",
   //接收父组件给的东西 type是接收什么东西  default 默认值
   props: {
     list: {
@@ -28,9 +24,7 @@ export default {
     }
   },
   //组件注册
-  components: {
-   footernav,
-  },
+  components: {},
   // vue数据集中管理
   data() {
     return {
@@ -104,21 +98,7 @@ export default {
 
 
 
-<style lang="scss" >
-* {
-  margin:0;
-  padding:0;
-}
-
-html,
-body {
-  touch-action:none;
-  height: 100%;
-  ul,
-  li{
-    list-style: none;
-  }
-}
+<style lang="scss" scoped>
 
 </style> 
  
